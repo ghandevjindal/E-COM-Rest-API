@@ -15,8 +15,9 @@ server.get('/', (req, res)=>{
     res.send("Welcome to Ecommerce APIs");
 });
 
-// 4. Specify port.
-server.listen(3200,()=>{
-    console.log("Server is running at 3200");
+const PORT = process.env.PORT || 3200; // fallback for local dev
+
+server.listen(PORT, () => {
+    console.log(`Server is running at ${PORT}`);
 });
 
