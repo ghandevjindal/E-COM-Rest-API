@@ -2,10 +2,16 @@ import ProductModel from "./product.model.js";
 
 export default class ProductController{
 
-    getAllProducts(req,res){
-        const products = ProductModel.GetAll();
+    getAllProducts(req, res){
+    try {
+        const products = ProductModel.getAll();
         res.status(200).send(products);
+    } catch (err) {
+        console.error('Error fetching products:', err);
+        res.status(500).send("Internal Server Error");
     }
+    }
+
 
     addProduct(req, res){
         const {name, price, sizes} = req.body;
